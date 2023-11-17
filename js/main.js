@@ -7,7 +7,7 @@ const products = {
       price: "23.890.000",
       start: 4.6,
       brand: "iphone",
-      link: "../html/product_detail.html"
+      link: "../html/product_detail.html",
     },
     {
       id: 2,
@@ -173,30 +173,41 @@ const products = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  const addHTML = async () => {
+    // Hàm fetch và cập nhật header
+    const fetchHeader = async () => {
+      const response = await fetch("../html/--header.html");
+      const data = await response.text();
+      const headerElements = document.querySelector(".header");
+      headerElements.innerHTML = data;
+    };
+
+    // Hàm fetch và cập nhật footer
+    const fetchFooter = async () => {
+      const response = await fetch("../html/--footer.html");
+      const data = await response.text();
+      const footerElements = document.querySelector(".footer");
+      footerElements.innerHTML = data;
+    };
+
+    // Gọi fetchHeader và fetchFooter lần lượt
+    await fetchHeader();
+    await fetchFooter();
+
+    // Sau khi header và footer được tải xong, bạn có thể gọi các hàm khác ở đây
+    Home();
+    Login();
+  };
+
   addHTML();
-
-  function addHTML() {
-    fetch("../html/--header.html")
-      .then((response) => response.text())
-      .then((data) => {
-        const headerElements = document.querySelector(".header");
-        headerElements.innerHTML = data;
-      });
-
-    fetch("../html/--footer.html")
-      .then((response) => response.text())
-      .then((data) => {
-        const footerElements = document.querySelector(".footer");
-        footerElements.innerHTML = data;
-      });
-  }
 });
 
-const home = async () => {
+const Home = async () => {
   const productList1 = document.querySelector(".product_list_1");
   const productList2 = document.querySelector(".product_list_2");
   const productList3 = document.querySelector(".product_list_3");
-  const items = products.product.map((item, index) => {
+
+  const items_1 = products.product.map((item, index) => {
     if (index <= 4) {
       return `<li class="list-group-item">
     <a href="${item.link}">
@@ -208,11 +219,68 @@ const home = async () => {
   </li>`;
     }
   });
-  const itemsHTML = items.join("");
-  productList1.innerHTML = itemsHTML;
-  productList2.innerHTML = itemsHTML;
-  productList3.innerHTML = itemsHTML;
+
+  const items_2 = products.product.map((item, index) => {
+    if (index >= 5 && index <= 9) {
+      return `<li class="list-group-item">
+      <a href="${item.link}">
+        <img
+          style="width: 207px; height: 207px"
+          src=${item.img}
+          alt=""
+      /></a>
+    </li>`;
+    }
+  });
+
+  const items_3 = products.product.map((item, index) => {
+    if (index >= 10 && index <= 14) {
+      return `<li class="list-group-item">
+      <a href="${item.link}">
+        <img
+          style="width: 207px; height: 207px"
+          src=${item.img}
+          alt=""
+      /></a>
+    </li>`;
+    }
+  });
+
+  const itemsHTML_1 = items_1.join("");
+  const itemsHTML_2 = items_2.join("");
+  const itemsHTML_3 = items_3.join("");
+  productList1.innerHTML = itemsHTML_1;
+  productList2.innerHTML = itemsHTML_2;
+  productList3.innerHTML = itemsHTML_3;
+};
+
+const Login = () => {
+  const userName = document.querySelector(".login span");
+  const userCurrent = document.querySelector(".login");
+  const userLogout = document.querySelector(".logout");
+  const userSelect = document.querySelector(".user-select");
+
+  let data = JSON.parse(localStorage.getItem("user_info"));
+  if (data && data.loged == 1) {
+    userName.innerText = data.user;
+  } else {
+    userSelect.style.display = "none";
+  }
+  if (data.loged == 1) {
+    userCurrent.addEventListener("click", (e) => {
+      e.preventDefault();
+    });
+  }
+  userLogout.addEventListener("click", () => {
+    let userDataString = localStorage.getItem("user_info");
+    let userData = JSON.parse(userDataString);
+    if (userData) {
+      userData.loged = 0;
+    }
+    let updatedUserDataString = JSON.stringify(userData);
+    localStorage.setItem("user_info", updatedUserDataString);
+    location.reload();
+  });
 };
 
 //--- call funcition
-home();

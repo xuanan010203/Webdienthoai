@@ -1,8 +1,8 @@
 * {
     /* background-color: #FFFBF0; */
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .banner_header {
@@ -24,7 +24,7 @@ a {
 .timkiem {
     padding: 8px;
     border-radius: 10px;
-    
+
 }
 
 
@@ -59,4 +59,33 @@ nav {
 
 }
 
+/* login */
 
+.user:hover .user-select {
+    display: block;
+}
+
+.user-select {
+    background-color: beige;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    border-radius: 2px;
+    display: none;
+}
+
+.user::before {
+    content: "";
+    position: absolute;
+    top: 80%;
+    left: 0;
+    background-color: rebeccapurple;
+    width: 100%;
+}
+
+.user-select {
+    cursor: pointer;
+    width: 100%;
+    padding: 0 10px;
+}

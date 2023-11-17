@@ -193,26 +193,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const home = async () => {
   const productList = document.querySelector(".product_list");
-
-  const items = products.product.map((e, index) => {
-    if (index >= 4) {
-      console.log(index)
-      return 
-    } else {
+  const items = products.product.map((item, index) => {
+    if (index <= 4) {
       return `<li class="list-group-item">
-      <a href="">
-        <img
-          style="width: 207px; height: 207px"
-          src=${e.img}
-          alt=""
-        />
-      </a>
-    </li>`;
+    <a href="">
+      <img
+        style="width: 207px; height: 207px"
+        src=${item.img}
+        alt=""
+    /></a>
+  </li>`;
     }
   });
- 
-  productList.innerHTML = items;
+  const itemsHTML = items.join("");
+  productList.innerHTML = itemsHTML;
 };
 
 //--- call funcition
 home();
+

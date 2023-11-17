@@ -7,6 +7,7 @@ const products = {
       price: "23.890.000",
       start: 4.6,
       brand: "iphone",
+      link: "../html/product_detail.html"
     },
     {
       id: 2,
@@ -192,11 +193,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const home = async () => {
-  const productList = document.querySelector(".product_list");
+  const productList1 = document.querySelector(".product_list_1");
+  const productList2 = document.querySelector(".product_list_2");
+  const productList3 = document.querySelector(".product_list_3");
   const items = products.product.map((item, index) => {
     if (index <= 4) {
       return `<li class="list-group-item">
-    <a href="">
+    <a href="${item.link}">
       <img
         style="width: 207px; height: 207px"
         src=${item.img}
@@ -206,9 +209,10 @@ const home = async () => {
     }
   });
   const itemsHTML = items.join("");
-  productList.innerHTML = itemsHTML;
+  productList1.innerHTML = itemsHTML;
+  productList2.innerHTML = itemsHTML;
+  productList3.innerHTML = itemsHTML;
 };
 
 //--- call funcition
 home();
-

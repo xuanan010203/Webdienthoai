@@ -7,7 +7,7 @@ let html = `<div class=" bg-black w-100" >
 <nav class="navbar navbar-expand-sm navbar-dark p-0">
 <div class="container-fluid container">
     <a class="navbar-brand p-0 d-flex align-items-center" style="width:190px;height:60px"
-        href="../html/index.html"><img class="w-100" src="../image/logo.png" alt="logo"></a>
+        href="../html/index.html"><img class="w-100" src="../img/logo.png" alt="logo"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span class="navbar-toggler-icon"></span>
     </button>

@@ -1,0 +1,202 @@
+* {
+    /* background-color: #FFFBF0; */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.menu div {
+    padding: 12px;
+    min-height: 30px;
+    line-height: 30px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 95px;
+    align-items: center;
+}
+
+.menu div a {
+    color: brown;
+    text-decoration: none;
+
+}
+
+.menu div a:hover {
+  color:black;
+  
+}
+
+
+.banner {
+    
+text-align: center;
+}
+.banner img{
+    width: 100%;
+}
+
+.hieu li {
+    display: inline;
+    padding: 40px;
+}
+
+.trangchu a {
+    height: 32px;
+    border: 1px;
+    border-radius: 50;
+}
+
+#right {
+    display: flex;
+    gap: 32px;
+    justify-content: right;
+}
+
+
+#right div  {
+    color: brown;
+}
+
+p{
+    text-indent: 10 em;
+}
+
+.timkiem {
+    padding:8px;
+    border-radius: 10px;
+    /* text-align: center; */
+}
+
+#left {
+    display: flex;
+    height: 100%;
+}
+
+#left img {
+    cursor: pointer;
+    width: 175px;
+    height: 100%;
+}
+
+#left div {
+    display: flex;
+}
+
+.cart {
+    
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.cart i {
+    left: 5px;
+}
+
+.logo {
+    height: 160px;
+    width: 200px;
+}
+
+.logo img {
+    width: 100px;
+    height: 100px;
+}
+
+
+
+
+
+
+.col-6 h1{
+    padding-top: 100px; 
+}
+.menu-bar{
+    background-color: FFFBF0;
+    padding: 12px 0;
+}
+.menu-bar ul{
+    display: flex;
+    justify-content: space-between;
+}
+.menu-bar ul li a{
+    color: black;
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+
+
+
+#container {
+    width: 100%;
+}
+
+
+
+
+
+
+/* KHUNG SẢN PHẨM */
+.tenkhung1{
+    background-color: #F9D342;
+    border-radius: 5rem;
+    padding: 5px ;
+}
+.tenkhung1 h3{
+    color: #292826;
+ text-align: center;
+ margin: 0;
+ align-items: center;
+}
+.listsp ul li{
+    cursor: pointer;
+
+}
+/*  */
+.tenkhung2 h3{
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    color:#36516e;
+   }
+   .tenkhung2{
+    padding: 5px ;
+    background-color: #f9d37d;
+    border-radius: 5rem;
+}
+
+/*  */
+.tenkhung3 h3{
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    color:#FFFFFF;
+   }
+   .tenkhung3{
+    padding: 5px ;
+    background-color: #8AAAE5;
+    border-radius: 5rem;
+    
+}
+
+/* lisp sản phẩm */
+.listsp{
+    margin-top: 20px;
+}
+
+/*  */
+.banner-black {
+    display: flex;
+   justify-content: center;
+}
+
+
+

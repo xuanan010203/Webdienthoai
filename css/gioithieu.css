@@ -1,0 +1,24 @@
+*{
+    /* background-color:#FFFBF0 ; */
+    padding:0;
+    margin:0;
+}
+ 
+.col-6  {
+font:Helvetica Neue;
+
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 95px;
+    align-items: center;
+}
+
+
+.menu div {
+    padding: 12px;
+    min-height: 30px;
+    line-height: 30px;
+}

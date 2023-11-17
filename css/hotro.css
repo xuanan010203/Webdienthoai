@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+section{
+	margin: 30px 50px 50px 50px;
+	width: 90%;
+}
+.info{
+	margin: 20px auto 0; 
+	display:inline-block;
+	width: 100%;
+   
+ 
+}
+/* .info-left{
+    float: left;
+    width: 48%;
+}
+.info-right {
+	float: right;
+	width: 48%;	
+} */

@@ -5,32 +5,60 @@ const products = {
       img: "../img/Product/product_1.webp",
       name: "IPhone 14 Pro Max 128GB",
       price: "23.890.000",
-      start: 4.6,
+      star: 4.6,
       brand: "iphone",
-      listImg: ["",""],
+      listImg: [
+        "../img/iphone-14/iphone-14(1).webp",
+        "../img/iphone-14/iphone-14(2).webp",
+        "../img/iphone-14/iphone-14(3).webp",
+        "../img/iphone-14/iphone-14-4.webp",
+        "../img/iphone-14/iphone-14-5.webp",
+        "../img/iphone-14/iphone-14-6.webp",
+        "../img/iphone-14/iphone-14-7.webp",
+        "../img/iphone-14/iphone-14-8.webp",
+        "../img/iphone-14/iphone-14-9.webp",
+        "../img/iphone-14/iphone-14-10.webp",
+        "../img/iphone-14/iphone-14-11.webp",
+        "../img/iphone-14/iphone-14-12.webp",
+      ],
+      cost: "27.890.000",
+      rv: 100,
     },
     {
       id: 2,
       img: "../img/Product/product_2.webp",
       name: "Samsung Galaxy A34 5G 256GB",
       price: "6.620.000",
-      start: 4.2,
+      star: 4.2,
       brand: "samsung",
+      listImg:[
+        "../img/Samsung-A34/samsung-A34-1.webp",
+        "../img/Samsung-A34/samsung-A34-2.webp",
+        "../img/Samsung-A34/samsung-A34-3.webp",
+        "../img/Samsung-A34/samsung-A34-4.webp",
+        "../img/Samsung-A34/samsung-A34-5.webp",
+        "../img/Samsung-A34/samsung-A34-6.webp",
+        "../img/Samsung-A34/samsung-A34-7.webp",
+
+      ],
+      cost: "8.620.000",
+      rv: 60,
     },
     {
       id: 3,
       img: "../img/Product/product_3.webp",
       name: "OPPO A57 128GB",
       price: "3.330.000",
-      start: 4.2,
+      star: 4.2,
       brand: "oppo",
+      listImg:[]
     },
     {
       id: 4,
       img: "../img/Product/product_4.webp",
       name: "Xiaomi Redmi Note 12 8GB",
       price: "4.270.000",
-      start: 4.6,
+      star: 4.6,
       brand: "xiaomi",
     },
     {
@@ -38,7 +66,7 @@ const products = {
       img: "../img/Product/product_5.webp",
       name: "iPhone 11 64GB",
       price: "8.640.000",
-      start: 4.1,
+      star: 4.1,
       brand: "iphone",
     },
     {
@@ -46,7 +74,7 @@ const products = {
       img: "../img/Product/product_6.webp",
       name: "Samsung Galaxy S23 5G 128GB",
       price: "15.510.000",
-      start: 4.6,
+      star: 4.6,
       brand: "samsung",
     },
     {
@@ -54,7 +82,7 @@ const products = {
       img: "../img/Product/product_7.webp",
       name: "Xiaomi 13 Lite 5G",
       price: "7.980.000",
-      start: 4.1,
+      star: 4.1,
       brand: "xiaomi",
     },
     {
@@ -62,7 +90,7 @@ const products = {
       img: "../img/Product/product_8.webp",
       name: " Vivo Y16 128GB",
       price: "3.870.000",
-      start: 3.9,
+      star: 3.9,
       brand: "vivo",
     },
     {
@@ -70,7 +98,7 @@ const products = {
       img: "../img/Product/product_9.webp",
       name: "realme C55 6GB",
       price: "23.890.000",
-      start: 4.6,
+      star: 4.6,
       brand: "realme",
     },
     {
@@ -78,7 +106,7 @@ const products = {
       img: "../img/Product/product_10.webp",
       name: " realme C55 6GB",
       price: "3.870.000",
-      start: 4.6,
+      star: 4.6,
       brand: "realme",
     },
     {
@@ -86,7 +114,7 @@ const products = {
       img: "../img/Product/product_11.webp",
       name: "Samsung Galaxy A14 6GB",
       price: "3.460.000",
-      start: 4.6,
+      star: 4.6,
       brand: "samsung",
     },
     {
@@ -94,7 +122,7 @@ const products = {
       img: "../img/Product/product_12.webp",
       name: "Samsung Galaxy A13 6GB",
       price: "2.920.000",
-      start: 4.6,
+      star: 4.6,
       brand: "samsung",
     },
     {
@@ -102,7 +130,7 @@ const products = {
       img: "../img/Product/product_13.webp",
       name: "OPPO Find N2 Flip",
       price: "19.990.000",
-      start: 4.6,
+      star: 4.6,
       brand: "oppo",
     },
     {
@@ -110,7 +138,7 @@ const products = {
       img: "../img/Product/product_14.webp",
       name: "Xiaomi Redmi 12C",
       price: "2.990.000",
-      start: 4.6,
+      star: 4.6,
       brand: "xiaomi",
     },
     {
@@ -118,7 +146,7 @@ const products = {
       img: "../img/Product/product_15.webp",
       name: "Samsung Galaxy S23 Ultra 5",
       price: "26.990.000",
-      start: 4.6,
+      star: 4.6,
       brand: "samsung",
     },
     {
@@ -126,7 +154,7 @@ const products = {
       img: "../img/Product/product_16.webp",
       name: "Vivo Y35",
       price: "6.290.000",
-      start: 4.6,
+      star: 4.6,
       brand: "vivo",
     },
     {
@@ -134,7 +162,7 @@ const products = {
       img: "../img/Product/product_17.webp",
       name: "Realme C30s",
       price: "1.890.000",
-      start: 4.6,
+      star: 4.6,
       brand: "realme",
     },
     {
@@ -142,7 +170,7 @@ const products = {
       img: "../img/Product/product_18.webp",
       name: "Samsung Galaxy S23+ 5G",
       price: "22.990.000",
-      start: 4.6,
+      star: 4.6,
       brand: "samsung",
     },
     {
@@ -150,7 +178,7 @@ const products = {
       img: "../img/Product/product_19.webp",
       name: "Samsung Galaxy Z Fold4 5G",
       price: "34.990.000",
-      start: 4.6,
+      star: 4.6,
       brand: "samsung",
     },
     {
@@ -158,7 +186,7 @@ const products = {
       img: "../img/Product/product_20.webp",
       name: "TCL 30+",
       price: "3.190.000",
-      start: 4.6,
+      star: 4.6,
       brand: "nokia",
     },
     {
@@ -166,7 +194,7 @@ const products = {
       img: "../img/Product/product_21.webp",
       name: "OPPO A16K",
       price: "1.890.000",
-      start: 4.6,
+      star: 4.6,
       brand: "oppo",
     },
   ],
@@ -220,7 +248,7 @@ const Home = async () => {
       <h6 >${item.name}</h6>
       <strong class="price"> ${item.price} </strong>
       <p class="text-decoration-line-through">${item.price}</p>
-      <div class="star">Đánh giá: ${item.start}</div>
+      <div class="star">Đánh giá: ${item.star}</div>
     </div>
   </li>`;
     }
@@ -239,7 +267,7 @@ const Home = async () => {
       <h6 >${item.name}</h6>
       <strong class="price"> ${item.price} </strong>
       <p class="text-decoration-line-through">${item.price}</p>
-      <div class="star">Đánh giá: ${item.start}</div>
+      <div class="star">Đánh giá: ${item.star}</div>
     </div>
     </li>`;
     }
@@ -258,7 +286,7 @@ const Home = async () => {
       <h6 >${item.name}</h6>
       <strong class="price"> ${item.price} </strong>
       <p class="text-decoration-line-through">${item.price}</p>
-      <div class="star">Đánh giá: ${item.start}</div>
+      <div class="star">Đánh giá: ${item.star}</div>
     </div>
     </li>`;
     }

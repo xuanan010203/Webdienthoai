@@ -16,11 +16,6 @@ a {
 
 
 
-
-
-
-
-
 .timkiem {
     padding: 8px;
     border-radius: 10px;
@@ -88,4 +83,16 @@ nav {
     cursor: pointer;
     width: 100%;
     padding: 0 10px;
+}
+/* hover cho header */
+.navbar-nav a:hover span{
+    color: brown;
+}
+
+/* hover cho icon */
+.navbar-nav d-flex a:hover span{
+    color: brown;
+}
+.navbar-nav d-flex i:hover {
+    color: brown;
 }

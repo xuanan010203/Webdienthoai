@@ -7,7 +7,7 @@ const products = {
       price: "23.890.000",
       start: 4.6,
       brand: "iphone",
-      link: "../html/product_detail.html",
+      listImg: ["",""],
     },
     {
       id: 2,

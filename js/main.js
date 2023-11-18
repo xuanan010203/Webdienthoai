@@ -216,6 +216,12 @@ const Home = async () => {
         src=${item.img}
         alt=""
     /></a>
+    <div class="content-items">
+      <h6 >${item.name}</h6>
+      <strong class="price"> ${item.price} </strong>
+      <p class="text-decoration-line-through">${item.price}</p>
+      <div class="star">Đánh giá: ${item.start}</div>
+    </div>
   </li>`;
     }
   });
@@ -229,6 +235,12 @@ const Home = async () => {
           src=${item.img}
           alt=""
       /></a>
+      <div class="content-items">
+      <h6 >${item.name}</h6>
+      <strong class="price"> ${item.price} </strong>
+      <p class="text-decoration-line-through">${item.price}</p>
+      <div class="star">Đánh giá: ${item.start}</div>
+    </div>
     </li>`;
     }
   });
@@ -242,6 +254,12 @@ const Home = async () => {
           src=${item.img}
           alt=""
       /></a>
+      <div class="content-items">
+      <h6 >${item.name}</h6>
+      <strong class="price"> ${item.price} </strong>
+      <p class="text-decoration-line-through">${item.price}</p>
+      <div class="star">Đánh giá: ${item.start}</div>
+    </div>
     </li>`;
     }
   });
@@ -284,3 +302,9 @@ const Login = () => {
 };
 
 //--- call funcition
+
+// Link ảnh trong banner chuyển động
+function changeSlide(slideIndex) {
+  var demoCarousel = new bootstrap.Carousel(document.getElementById("demo"));
+  demoCarousel.to(slideIndex);
+}

@@ -199,4 +199,13 @@ p{
 }
 
 
+.price{
+    color: brown;
+}
 
+.content-items{
+    width: 207px;
+    margin-left: 10px;
+    
+    margin-top: 10px;
+}

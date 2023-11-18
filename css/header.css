@@ -81,8 +81,8 @@ nav {
 
 .user-select {
     cursor: pointer;
-    width: 100%;
     padding: 0 10px;
+    width: fit-content;
 }
 /* hover cho header */
 .navbar-nav a:hover span{

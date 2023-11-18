@@ -17,3 +17,9 @@ h4 a:hover{
     color: brown;
 }
 
+.list-group  {  
+    gap: 15px;
+}
+.list-group li  {
+    gap: 15px;
+}

@@ -1,4 +1,4 @@
-const header = document.querySelector('.header')
+const header = document.querySelector(".header");
 
 let html = `<div class=" bg-black w-100" >
 <img class="container" src="../img/banner_header.webp" alt="">
@@ -43,9 +43,12 @@ let html = `<div class=" bg-black w-100" >
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link text-dark" href="javascript:void(0)">
+                <a class="nav-link text-dark" href="../html/login.html">
                     <i class="fa-regular fa-user"></i>
-                    Tài khoản
+                    ${
+                      JSON.parse(localStorage.getItem("user_info")).user ||
+                      "Tài khoản"
+                    }
                 </a>
             </li>
         </ul>

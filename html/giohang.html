@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/yourcode.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <title>OneSmartphone</title>
+    <link rel="shortcut icon" href="../image/favicon.ico" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/gioithieu.css" />
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.6.4.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Thêm bớt số lượng
+      document.addEventListener("DOMContentLoaded", function () {
+        // Lấy phần tử input
+        var inputQuantity = document.querySelector('input[name="quantity"]');
+
+        // Lấy nút trừ và nút cộng
+        var btnMinus = document.querySelector('[data-type="minus"]');
+        var btnPlus = document.querySelector('[data-type="plus"]');
+
+        // Bắt sự kiện click cho nút trừ
+        btnMinus.addEventListener("click", function () {
+          var currentValue = parseInt(inputQuantity.value, 10);
+          if (currentValue > 1) {
+            inputQuantity.value = currentValue - 1;
+          }
+        });
+
+        // Bắt sự kiện click cho nút cộng
+        btnPlus.addEventListener("click", function () {
+          var currentValue = parseInt(inputQuantity.value, 10);
+          inputQuantity.value = currentValue + 1;
+        });
+      });
+
+      // Kiểm tra
+      $(document).ready(function () {
+          const regexName =
+            /^([A-ZĐÁÀẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰỲÝỶỸỴ][a-zđáàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựỳýỷỹỵ]+\s?)+([A-ZĐÁÀẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰỲÝỶỸỴ][a-zđáàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựỳýỷỹỵ]*)*\s*$/;
+          const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const regexPhoneNumber = /^\d{10}$/;
+
+          function addErrorText(id, text) {
+            // Lấy phần tử mục tiêu
+            var targetElement = $(id);
+
+            // Thay đổi đoạn HTML bằng văn bản
+            targetElement.text(text);
+
+            // Tạo một phần tử div chứa văn bản
+            var divElement = $("<div>")
+              .addClass("text-danger mt-1 ms-1")
+              .css("font-size", ".8rem")
+              .text(text);
+
+            // Chèn div vào sau phần tử mục tiêu
+            targetElement.after(divElement);
+          }
+
+          $("#xacnhan").click(function (e) {
+            e.preventDefault();
+            let isValid = true; // Biến kiểm tra hợp lệ
+
+            if (!regexName.test($("#name").val())) {
+              addErrorText("#name", "(*) Ký tự đầu mỗi chữ phải in hoa");
+              isValid = false;
+            } else {
+              $("#name").next().remove();
+            }
+
+            if (!regexEmail.test($("#email").val())) {
+              addErrorText("#email", "(*) Nhập đúng dịnh dạng email");
+              isValid = false;
+            } else {
+              $("#email").next().remove();
+            }
+
+            if (!regexPhoneNumber.test($("#tel").val())) {
+              addErrorText("#tel", "(*) Số điện thoại phải có đủ 10 chữ số");
+              isValid = false;
+            } else {
+              $("#tel").next().remove();
+            }
+
+            if (isValid) {
+              // Nếu tất cả các trường đều hợp lệ, cho phép chuyển tab
+              $('#OrderModal a[href="#pay-QR"]').tab("show");
+            }
+          });
+        });
+
+
+
+    </script>
+
+
+  </head>
+
+  <body>
+    <!-- header -->
+    <div class="header"></div>
+
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-6 mx-auto text-center position-relative border-bottom">
+                <i class="fa-solid fa-arrow-left fs-5 position-absolute" style="left: 0;"></i>
+                <b class="fs-5">Giỏ hàng của bạn</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 mx-auto mt-4">
+                <input type="radio" value=""> Chọn tất cả
+            </div>
+        </div>
+        <div class="product-buy">
+            <!-- <div class="row">
+                <div class="col-6 mx-auto mt-4 border d-flex p-3">
+                    <input type="radio" value=""> 
+                    <img src="../img/iphone-14/iphone-14.webp" alt="" class="mx-2" style="width: 120px;">
+                    <div class="pay-info d-flex flex-column mx-4">
+                        <span class="fs-6">iPhone 14 Pro Max-Tím</span>
+                        <div>
+                            <span class="text-danger fs-6">27.090.000đ</span>
+                            <span style="text-decoration: line-through; font-size: 12px;">29.990.000đ</span>
+                        </div>
+                    </div>
+                    <div class="icon-pay text-end">
+                        <i class="fa-solid fa-trash"></i>
+                        <div class="input-group input-group-sm border rounded-2 w-100">
+                            
+                            <div class="input-group-prepend">
+                                <button
+                                    type="button"
+                                    class="btn btn-default btn-number btn-sm"
+                                    data-type="minus"
+                                    data-field="quantity"
+                                >
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        
+                          
+                            <input
+                                type="text"
+                                name="quantity"
+                                class="form-control input-number input-focus-none text-center"
+                                value="1"
+                                min="1"
+                                readonly
+                            />
+                        
+                           
+                            <div class="input-group-append">
+                                <button
+                                    type="button"
+                                    class="btn btn-default btn-number btn-sm"
+                                    data-type="plus"
+                                    data-field="quantity"
+                                >
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="row mt-3">
+            <div class="col-6 mx-auto">
+                <button class="btn btn-danger w-100" data-bs-toggle="modal"
+                data-bs-target="#OrderModal">
+                    Mua
+                </button>
+            </div>
+                      <!-- Bill -->
+          <div class="modal fade" id="OrderModal">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <ul class="nav nav-tabs" id="myTabs">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link active text-secondary"
+                        id="order-tab"
+                        data-bs-toggle="tab"
+                        href="#order-info"
+                        role="tab"
+                        aria-controls="order-info"
+                        aria-selected="true"
+                        ><i class="fa-solid fa-1 fs-7"></i> . Thông tin mua
+                        hàng</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link text-secondary"
+                        id="pay-tab"
+                        data-bs-toggle="tab"
+                        href="#pay-QR"
+                        role="tab"
+                        aria-controls="pay-QR"
+                        aria-selected="false"
+                      >
+                        <i class="fa-solid fa-2 fs-7"></i>
+                        . Thanh toán</a
+                      >
+                    </li>
+                  </ul>
+                  <button
+                    type="button"
+                    class="close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body tab-content" id="myTabContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="order-info"
+                    role="tabpanel"
+                    aria-labelledby="order-tab"
+                  >
+                    <!-- Order form -->
+                    <form id="orderForm" class="mx-2">
+                      <div class="row border">
+                        <div class="col-2 p-2">
+                          <img
+                            src="../img/iphone-14/iphone-14.webp"
+                            alt=""
+                            class="img-fluid"
+                          />
+                        </div>
+                        <div class="col-7">
+                          <span>iPhone 14 Pro Max-Tím</span>
+                          <div class="price">
+                            <span class="text-danger">26.590.000đ</span>
+                            <span
+                              class="mx-2"
+                              style="text-decoration: line-through"
+                              >29.990.000đ</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <span>Số lượng : 1</span>
+                        </div>
+                      </div>
+                      <div class="row mb-3 mt-3">THÔNG TIN KHÁCH HÀNG</div>
+                      <div class="row border">
+                        <div class="col-12 d-flex mb-3 mt-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            placeholder="Họ và tên (bắt buộc)"
+                            style="margin-right: 5px; border: 0"
+                          />
+                          <input
+                            type="tel"
+                            class="form-control"
+                            id="tel"
+                            placeholder="Số điện thoại (bắt buộc)"
+                            style="margin-left: 5px; border: 0"
+                          />
+                        </div>
+                        <div class="col-12 mb-3">
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            placeholder="Email"
+                            style="border: 0"
+                          />
+                          <span class="mx-2" style="font-size: 10px"
+                            ><i
+                              >(*) Hóa đơn VAT sẽ được gủi qua email này
+                            </i></span
+                          >
+                        </div>
+                        <div class="col-12 form-check mx-3 mb-3">
+                          <label class="form-check-lable">
+                            <input
+                              type="checkbox"
+                              class="form-check-input"
+                              name="remember"
+                            />
+                            <span style="font-size: 13px"
+                              >Nhận email thông báo và ưu đãi từ
+                              OneSmartphone</span
+                            >
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3 mt-3">THÔNG TIN NHẬN HÀNG</div>
+                      <div class="row border">
+                        <div class="col-12 d-flex mb-3 mt-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="city"
+                            placeholder="Tỉnh/Thành phố"
+                            style="margin-right: 5px; border: 0"
+                          />
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="quan"
+                            placeholder="Quận/Huyện"
+                            style="margin-left: 5px; border: 0"
+                          />
+                        </div>
+                        <div class="col-12 d-flex mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="phuong"
+                            placeholder="Phường/Xã"
+                            style="margin-right: 5px; border: 0"
+                          />
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="sonha"
+                            placeholder="Số nhà, tên đường"
+                            style="margin-left: 5px; border: 0"
+                          />
+                        </div>
+                        <div class="col-12 mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="ghichu"
+                            placeholder="Ghi chú khác (nếu có)"
+                            style="border: 0"
+                          />
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <span style="font-size: 10px"
+                          ><b>Mẹo:</b> Bạn có thể cài đặt Số địa chỉ tại
+                          <b>trang thông tin cá nhân</b> để đặt hàng nhanh
+                          hơn</span
+                        >
+                        <br />
+                        <label class="form-check-lable">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="request"
+                          />
+                          <span style="font-size: 13px"
+                            >Yêu cầu xuất hóa đơn</span
+                          >
+                          <br />
+                          <span style="font-size: 11px"
+                            >Với đơn hàng <b>trên 20 triệu đồng</b>, vui lòng
+                            thanh toán bằng phương thức chuyển khoản. Quý khách
+                            vui lòng chuyển qua bước 2 để thanh toán.</span
+                          >
+                        </label>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-12">
+                          <button class="btn btn-danger w-100" id="xacnhan">
+                            Xác nhận
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div
+                    class="tab-pane fade"
+                    id="pay-QR"
+                    role="tabpanel"
+                    aria-labelledby="pay-tab"
+                  >
+                    <!-- Pay Form -->
+                    <form action="">
+                      <div class="row g-3">
+                        <div class="col-8 mx-auto">
+                          <img src="../img/QR.jpg" alt="" class="w-100" />
+                        </div>
+                        <div class="col-12">
+                          <label class="form-check-lable">
+                            <input
+                              type="checkbox"
+                              class="form-check-input"
+                              name="accept"
+                            />
+                            <span style="font-size: 11px"
+                              ><i
+                                >(*) Quý khách vui lòng thanh toán qua mã QR
+                                trước 24h kể từ lúc đặt mua</i
+                              ></span
+                            >
+                          </label>
+                          <br />
+                          <span style="font-size: 12px"
+                            >Mọi thông tin chi tiết sẽ được sẽ được gửi qua
+                            email.</span
+                          >
+                        </div>
+                        <div class="col-12 mt-3">
+                          <button class="btn btn-danger w-100">Thoát</button>
+                        </div>
+                      </div>
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- footer -->
+    <div class="footer"></div>
+  </body>
+  <script src="../js/main.js"></script>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/yourcode.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <title>OneSmartphone</title>
+    <link rel="shortcut icon" href="../img/favicon.ico" />
+    <!-- <link rel="stylesheet" href="../css/index.css" /> -->
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <!-- <link rel="stylesheet" href="../css/bootstrap-grid.min.css"> -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <div class="header"></div>
+
+    <div class="container mt-3">
+      <div class="filter d-flex flex-rows gap-2">
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn btn-outline-secondary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            id="dropdownButton_Hang"
+          >
+            Hãng
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">iPhone</a></li>
+            <li><a class="dropdown-item" href="#">Xiaomi</a></li>
+            <li><a class="dropdown-item" href="#">SamSung</a></li>
+            <li><a class="dropdown-item" href="#">OPPO</a></li>
+            <li><a class="dropdown-item" href="#">Redmi</a></li>
+            <li><a class="dropdown-item" href="#">Realmi</a></li>
+            <li><a class="dropdown-item" href="#">Vivo</a></li>
+            <li><a class="dropdown-item" href="#">Nokia</a></li>
+          </ul>
+        </div>
+
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn btn-outline-secondary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            id="dropdownButton_Gia"
+          >
+            Giá
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Dưới 2.000.000 VNĐ</a></li>
+            <li>
+              <a class="dropdown-item" href="#"
+                >Từ 2.000.000 VNĐ đến 3.000.000 VNĐ</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"
+                >Từ 3.000.000 VNĐ đến 4.000.000 VNĐ</a
+              >
+            </li>
+            <li><a class="dropdown-item" href="#">Trên 4.000.000 VNĐ</a></li>
+          </ul>
+        </div>
+
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn btn-outline-secondary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            id="dropdownButton_RAM"
+          >
+            RAM
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item w-100" href="#">2GB</a></li>
+            <li><a class="dropdown-item" href="#">3GB</a></li>
+            <li><a class="dropdown-item" href="#">4GB</a></li>
+            <li><a class="dropdown-item" href="#">6GB</a></li>
+            <li><a class="dropdown-item" href="#">8GB</a></li>
+            <li><a class="dropdown-item" href="#">16GB</a></li>
+          </ul>
+        </div>
+
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn btn-outline-secondary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            id="dropdownButton_RAM"
+          >
+            ROM
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">32GB</a></li>
+            <li><a class="dropdown-item" href="#">64GB</a></li>
+            <li><a class="dropdown-item" href="#">128GB</a></li>
+            <li><a class="dropdown-item" href="#">512GB</a></li>
+            <li><a class="dropdown-item" href="#">1TB</a></li>
+          </ul>
+        </div>
+
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn btn-outline-secondary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            id="dropdownButton_Pin"
+          >
+            Dung lượng pin
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">4500 mAh</a></li>
+            <li><a class="dropdown-item" href="#">5000 mAh</a></li>
+            <li><a class="dropdown-item" href="#">6500 mAh</a></li>
+            <li><a class="dropdown-item" href="#">Trên 6500 mAh</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container bg-light py-3 my-3">
+        <div class="khung_all_product">
+          <h3>Danh sách toàn bộ sản phẩm</h3>
+        </div>
+        <div class="listsp">
+          <ul
+            class="list-group list-group-horizontal-sm flex-lg-wrap d-flex justify-content-center gap-2 product_list"
+          ></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer"></div>
+  </body>
+  <script type="module" src="../js/main.js"></script>
+</html>

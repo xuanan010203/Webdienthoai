@@ -143,11 +143,16 @@
         const nameProductModel = document.querySelector(".nameProductModel");
         const priceProductModel = document.querySelector(".priceProductModel");
         const imgModel = document.querySelector(".imgModel");
+        const costModel = document.querySelector(".costModel");
+        const cost = document.querySelector(".cost");
+        const reviews = document.querySelector(".reviews");
 
+        reviews.innerHTML = decodedData.rv + " đánh giá";
+        costModel.innerHTML = decodedData.cost;
+        cost.innerHTML = decodedData.cost;
         nameProductModel.innerHTML = decodedData.name;
         priceProductModel.innerHTML = decodedData.price;
         imgModel.src = decodedData.img;
-        image.src = decodedData.img;
         price.innerHTML = decodedData.price;
         nameProduct.innerHTML = decodedData.name;
 
@@ -165,24 +170,154 @@
           }
         });
         // ---cart
-        const addCart = document.querySelector(".addCart");
+        const addCart = document.querySelector("#addCart");
         addCart.addEventListener("click", (e) => {
           // ------ xử lý không cho nó thêm hàng vào giỏ khi chưa đăng nhập
+          var userData = JSON.parse(localStorage.getItem("user_info"));
+
+          if (userData.products.length === 0) {
+            var newProduct = {
+              id: decodedData.id,
+              name: decodedData.name,
+              quantity: parseInt(inputQuantity.value),
+              img: decodedData.img,
+              price: decodedData.price,
+              cost: decodedData.cost,
+            };
+            userData.products.push(newProduct);
+            alert("Đã thêm vào giỏ hàng");
+            localStorage.setItem("user_info", JSON.stringify(userData));
+          }
+
           if (user && user.loged == 1) {
-            // var userData = JSON.parse(localStorage.getItem("user_info"));
-            // var newProduct = {
-            //   id: decodedData.id,
-            //   name: decodedData.name,
-            //   price: inputQuantity.value,
-            //   img: decodedData.img
-            // };
-            // userData.products.push(newProduct);
-            // console.log(userData);
-            // localStorage.setItem("user_info", JSON.stringify(userData));
+            userData.products.map((e) => {
+              if (e.id == decodedData.id) {
+                e.quantity =
+                  parseInt(e.quantity) + parseInt(inputQuantity.value);
+              } else {
+                var newProduct = {
+                  id: decodedData.id,
+                  name: decodedData.name,
+                  quantity: parseInt(inputQuantity.value),
+                  img: decodedData.img,
+                  price: decodedData.price,
+                  cost: decodedData.cost,
+                };
+                userData.products.push(newProduct);
+              }
+            });
+            alert("Đã thêm vào giỏ hàng");
+            localStorage.setItem("user_info", JSON.stringify(userData));
           } else {
             window.location.href = "../html/login.html";
           }
         });
+
+        // Kiểm tra
+        $(document).ready(function () {
+          const regexName =
+            /^([A-ZĐÁÀẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰỲÝỶỸỴ][a-zđáàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựỳýỷỹỵ]+\s?)+([A-ZĐÁÀẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰỲÝỶỸỴ][a-zđáàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựỳýỷỹỵ]*)*\s*$/;
+          const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const regexPhoneNumber = /^\d{10}$/;
+
+          function addErrorText(id, text) {
+            // Lấy phần tử mục tiêu
+            var targetElement = $(id);
+
+            // Thay đổi đoạn HTML bằng văn bản
+            targetElement.text(text);
+
+            // Tạo một phần tử div chứa văn bản
+            var divElement = $("<div>")
+              .addClass("text-danger mt-1 ms-1")
+              .css("font-size", ".8rem")
+              .text(text);
+
+            // Chèn div vào sau phần tử mục tiêu
+            targetElement.after(divElement);
+          }
+
+          $("#xacnhan").click(function (e) {
+            e.preventDefault();
+            let isValid = true; // Biến kiểm tra hợp lệ
+
+            if (!regexName.test($("#name").val())) {
+              addErrorText("#name", "(*) Ký tự đầu mỗi chữ phải in hoa");
+              isValid = false;
+            } else {
+              $("#name").next().remove();
+            }
+
+            if (!regexEmail.test($("#email").val())) {
+              addErrorText("#email", "(*) Nhập đúng dịnh dạng email");
+              isValid = false;
+            } else {
+              $("#email").next().remove();
+            }
+
+            if (!regexPhoneNumber.test($("#tel").val())) {
+              addErrorText("#tel", "(*) Số điện thoại phải có đủ 10 chữ số");
+              isValid = false;
+            } else {
+              $("#tel").next().remove();
+            }
+
+            if (isValid) {
+              // Nếu tất cả các trường đều hợp lệ, cho phép chuyển tab
+              $('#OrderModal a[href="#pay-QR"]').tab("show");
+            }
+          });
+        });
+
+        var tablist = document.querySelector(".tablist");
+        decodedData.listImg.map((e, index) => {
+          var listItemHTML = `<li class="nav-item" role="presentation">
+                      <button
+                        type="button"
+                        class="btn btn-light border py-1 my-1"
+                        data-bs-toggle="tab"
+                        data-bs-target="#tab_img_${index}"
+                        role="tab"
+                        aria-controls="tab_img_${index}"
+                        onclick="showTab('tab_img_${index}')"
+                        aria-selected="true"
+                      >
+                        <img
+                          src=${e}
+                          alt=""
+                          class="img-fluid w-75"
+                        />
+                      </button>
+                    </li>`;
+          tablist.insertAdjacentHTML("beforeend", listItemHTML);
+        });
+
+        var tabContent = document.getElementById("tab_img_content");
+        tabContent.innerHTML = `<div
+                      class="tab-pane fade show active"
+                      id="tab_img_${0}"
+                    >
+                      <img src=${
+                        decodedData.listImg[0]
+                      } alt="" class="img-fluid" />
+                    </div>`;
+
+        decodedData.listImg.map((e, index) => {
+          if (index != 0) {
+            var listItemHTML = `<div class="tab-pane fade supportItemsdiv" id="tab_img_${index}">
+                      <img src=${e} alt="" class="img-fluid" />
+                    </div>`;
+            tabContent.insertAdjacentElement("afterend", listItemHTML);
+          }
+        });
+
+        //   var htmlString = `
+        //     <i class="fa-solid fa-circle-chevron-left position-absolute top-50" style="left: 0"></i>
+        //     <i class="fa-solid fa-circle-chevron-right position-absolute top-50" style="right: 0"></i>
+        // `;
+
+        //   // Thêm đoạn mã HTML vào cuối thẻ div
+        //   tabContent.innerHTML += htmlString;
       });
     </script>
   </head>
@@ -195,7 +330,7 @@
           <div class="row">
             <!-- nav tab -->
             <ul
-              class="nav col-2 overflow-auto"
+              class="nav col-2 overflow-auto tablist"
               style="max-height: 360px; direction: rtl"
               role="tablist"
             >
@@ -217,7 +352,7 @@
                   />
                 </button>
               </li>
-              <li class="nav-item" role="presentation">
+              <!-- <li class="nav-item" role="presentation">
                 <button
                   type="button"
                   class="btn btn-light border py-1 my-1"
@@ -414,7 +549,7 @@
                     class="img-fluid w-75"
                   />
                 </button>
-              </li>
+              </li> -->
             </ul>
 
             <!-- Tab content -->
@@ -422,10 +557,13 @@
               class="tab-content col-10 d-flex justify-content-center align-items-center border position-relative"
               id="tab_img_content"
             >
-              <div class="tab-pane fade show active" id="tab_img_1">
+              <!-- <div
+                class="tab-pane fade show active mainItemsdiv"
+                id="tab_img_1"
+              >
                 <img src="../img/iphone-14.webp" alt="" class="img-fluid" />
               </div>
-              <div class="tab-pane fade" id="tab_img_2">
+              <div class="tab-pane fade supportItemsdiv" id="tab_img_2">
                 <img src="../img/iphone-14-2.webp" alt="" class="img-fluid" />
               </div>
               <div class="tab-pane fade" id="tab_img_3">
@@ -457,16 +595,16 @@
               </div>
               <div class="tab-pane fade" id="tab_img_12">
                 <img src="../img/iphone-14-12.webp" alt="" class="img-fluid" />
-              </div>
+              </div> -->
 
-              <i
+              <!-- <i
                 class="fa-solid fa-circle-chevron-left position-absolute top-50"
                 style="left: 0"
               ></i>
               <i
                 class="fa-solid fa-circle-chevron-right position-absolute top-50"
                 style="right: 0"
-              ></i>
+              ></i> -->
             </div>
           </div>
 
@@ -527,7 +665,7 @@
                 >
               </button>
               <button
-                class="btn btn-outline-danger mx-2 addCart"
+                class="btn btn-outline-danger mx-2"
                 id="addCart"
                 style="font-size: 11px"
               >
@@ -606,7 +744,7 @@
                               >26.590.000đ</span
                             >
                             <span
-                              class="mx-2"
+                              class="mx-2 costModel"
                               style="text-decoration: line-through"
                               >29.990.000đ</span
                             >
@@ -731,6 +869,13 @@
                           >
                         </label>
                       </div>
+                      <div class="row mt-3">
+                        <div class="col-12">
+                          <button class="btn btn-danger w-100" id="xacnhan">
+                            Xác nhận
+                          </button>
+                        </div>
+                      </div>
                     </form>
                   </div>
 
@@ -790,7 +935,9 @@
             </div>
 
             <div class="d-inline-block">
-              <span style="text-decoration: line-through">29.990.000đ</span>
+              <span class="cost" style="text-decoration: line-through"
+                >29.990.000đ</span
+              >
               <span class="px-1 mx-2 bg-danger text-white">11%</span>
             </div>
           </div>
@@ -801,7 +948,7 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
-            <span class="mx-4 text-secondary">54 đánh giá</span>
+            <span class="mx-4 text-secondary reviews">54 đánh giá</span>
           </div>
 
           <div class="ip-14-content border p-2 mt-3">

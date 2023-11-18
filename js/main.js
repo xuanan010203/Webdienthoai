@@ -421,7 +421,7 @@ const Home = async () => {
 
   const items_1 = products.product.map((item, index) => {
     if (index <= 4) {
-      return `<li class="list-group-item" id=${item.id}>
+      return `<li class="list-group-item" id=${index}>
     
       <img
         style="width: 207px; height: 207px"
@@ -439,7 +439,7 @@ const Home = async () => {
 
   const items_2 = products.product.map((item, index) => {
     if (index >= 5 && index <= 9) {
-      return `<li class="list-group-item" id=${item.id}>
+      return `<li class="list-group-item" id=${index}>
     
       <img
         style="width: 207px; height: 207px"
@@ -457,7 +457,7 @@ const Home = async () => {
 
   const items_3 = products.product.map((item, index) => {
     if (index >= 10 && index <= 14) {
-      return `<li class="list-group-item" id=${item.id}>
+      return `<li class="list-group-item" id=${index}>
     
       <img
         style="width: 207px; height: 207px"
@@ -506,8 +506,8 @@ const Home = async () => {
       );
 
       // Chuyển hướng đến trang mới và truyền dữ liệu qua tham số truy vấn
-      // window.location.href =
-      //   "http://127.0.0.1:5500/html/product_detail.html?data=" + encodedData;
+      window.location.href =
+        "http://127.0.0.1:5500/html/product_detail.html?data=" + encodedData;
     });
   });
 
@@ -634,7 +634,7 @@ const Product_All = () => {
   const productList_all = document.querySelector(".product_list");
 
   const items_all = products.product.map((item, index) => {
-    return `<li class="list-group-item" id=${item.id}>
+    return `<li class="list-group-item" id=${index}>
     
       <img
         style="width: 207px; height: 207px"

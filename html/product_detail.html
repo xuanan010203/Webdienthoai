@@ -13,8 +13,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
 
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
     <script src="../js/product_detail.js"></script>
 
     <title>iPhone 14 Pro Max 128GB | Chính hãng VN/A</title>
@@ -117,11 +117,66 @@
           viewMoreBtn.style.display = "none";
         });
       });
+
+      // Kiểm tra
+      $(document).ready(function () {
+        const regexName =
+          /^([A-ZĐÁÀẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰỲÝỶỸỴ][a-zđáàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựỳýỷỹỵ]+\s?)+([A-ZĐÁÀẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰỲÝỶỸỴ][a-zđáàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựỳýỷỹỵ]*)*\s*$/;
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const regexPhoneNumber = /^\d{10}$/;
+
+        function addErrorText(id, text) {
+          // Lấy phần tử mục tiêu
+          var targetElement = $(id);
+
+          // Thay đổi đoạn HTML bằng văn bản
+          targetElement.text(text);
+
+          // Tạo một phần tử div chứa văn bản
+          var divElement = $("<div>")
+            .addClass("text-danger mt-1 ms-1")
+            .css("font-size", ".8rem")
+            .text(text);
+
+          // Chèn div vào sau phần tử mục tiêu
+          targetElement.after(divElement);
+        }
+
+        $("#xacnhan").click(function (e) {
+          e.preventDefault();
+          let isValid = true; // Biến kiểm tra hợp lệ
+
+          if (!regexName.test($("#name").val())) {
+            addErrorText("#name", "(*) Ký tự đầu mỗi chữ phải in hoa");
+            isValid = false;
+          } else {
+            $("#name").next().remove();
+          }
+
+          if (!regexEmail.test($("#email").val())) {
+            addErrorText("#email", "(*) Nhập đúng dịnh dạng email");
+            isValid = false;
+          } else {
+            $("#email").next().remove();
+          }
+
+          if (!regexPhoneNumber.test($("#tel").val())) {
+            addErrorText("#tel", "(*) Số điện thoại phải có đủ 10 chữ số");
+            isValid = false;
+          } else {
+            $("#tel").next().remove();
+          }
+
+          if (isValid) {
+            // Nếu tất cả các trường đều hợp lệ, cho phép chuyển tab
+            $('#OrderModal a[href="#pay-QR"]').tab("show");
+          }
+        });
+      });
     </script>
   </head>
 
   <body>
-   
     <div class="header"></div>
     <div class="container">
       <div class="bg-white row">
@@ -254,7 +309,6 @@
                 >
                   <img
                     src="../img/iphone-14/iphone-14-7.webp"
-                    
                     alt=""
                     class="img-fluid w-75"
                   />
@@ -358,31 +412,67 @@
               id="tab_img_content"
             >
               <div class="tab-pane fade show active" id="tab_img_1">
-                <img src="../img/iphone-14/iphone-14.webp" alt="" class="img-fluid" />
+                <img
+                  src="../img/iphone-14/iphone-14.webp"
+                  alt=""
+                  class="img-fluid"
+                />
               </div>
               <div class="tab-pane fade" id="tab_img_2">
-                <img src="../img/iphone-14/iphone-14-2.webp" alt="" class="img-fluid" />
+                <img
+                  src="../img/iphone-14/iphone-14-2.webp"
+                  alt=""
+                  class="img-fluid"
+                />
               </div>
               <div class="tab-pane fade" id="tab_img_3">
-                <img src="../img/iphone-14/iphone-14-3.webp" alt="" class="img-fluid" />
+                <img
+                  src="../img/iphone-14/iphone-14-3.webp"
+                  alt=""
+                  class="img-fluid"
+                />
               </div>
               <div class="tab-pane fade" id="tab_img_4">
-                <img src="../img/iphone-14/iphone-14-4.webp" alt="" class="img-fluid" />
+                <img
+                  src="../img/iphone-14/iphone-14-4.webp"
+                  alt=""
+                  class="img-fluid"
+                />
               </div>
               <div class="tab-pane fade" id="tab_img_5">
-                <img src="../img/iphone-14/iphone-14-5.webp" alt="" class="img-fluid" />
+                <img
+                  src="../img/iphone-14/iphone-14-5.webp"
+                  alt=""
+                  class="img-fluid"
+                />
               </div>
               <div class="tab-pane fade" id="tab_img_6">
-                <img src="../img/iphone-14/iphone-14-6.webp" alt="" class="img-fluid" />
+                <img
+                  src="../img/iphone-14/iphone-14-6.webp"
+                  alt=""
+                  class="img-fluid"
+                />
               </div>
               <div class="tab-pane fade" id="tab_img_7">
-                <img src="../img/iphone-14/iphone-14-7.webp" alt="" class="img-fluid" />
+                <img
+                  src="../img/iphone-14/iphone-14-7.webp"
+                  alt=""
+                  class="img-fluid"
+                />
               </div>
               <div class="tab-pane fade" id="tab_img_8">
-                <img src="../img/iphone-14/iphone-14-8.webp" alt="" class="img-fluid" />
+                <img
+                  src="../img/iphone-14/iphone-14-8.webp"
+                  alt=""
+                  class="img-fluid"
+                />
               </div>
               <div class="tab-pane fade" id="tab_img_9">
-                <img src="../img/iphone-14/iphone-14-9.webp" alt="" class="img-fluid" />
+                <img
+                  src="../img/iphone-14/iphone-14-9.webp"
+                  alt=""
+                  class="img-fluid"
+                />
               </div>
               <div class="tab-pane fade" id="tab_img_10">
                 <img
@@ -674,6 +764,13 @@
                           >
                         </label>
                       </div>
+                      <div class="row mt-3">
+                        <div class="col-12">
+                          <button class="btn btn-danger w-100" id="xacnhan">
+                            Xác nhận
+                          </button>
+                        </div>
+                      </div>
                     </form>
                   </div>
 
@@ -795,23 +892,6 @@
           </div>
         </div>
       </div>
-
-      <!-- <div class="mt-4">
-            <div class="row">
-                <div class="col-3 border d-flex w-25 h-25">
-                    <img src="../img/iphone-14(2).webp" alt="" class="w-100">
-                </div>
-                <div class="col-3 border ">
-                    <img src="../img/iphone-14(2).webp" alt="" class="w-25">
-                </div>
-                <div class="col-3 border ">
-                    <img src="../img/iphone-14(2).webp" alt="" class="w-25">
-                </div>
-                <div class="col-3 border ">
-                    <img src="../img/iphone-14(2).webp" alt="" class="w-25">
-                </div>
-            </div>
-        </div> -->
 
       <!-- Chi tiết sản phẩm -->
       <div class="row bg-white mt-3">
@@ -1177,8 +1257,7 @@
       </div>
     </div>
 
-
     <div class="footer"></div>
   </body>
-  <script type="module" src="../js/main.js">  </script>
+  <script type="module" src="../js/main.js"></script>
 </html>

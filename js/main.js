@@ -7,7 +7,6 @@ const products = {
       price: "23.890.000",
       start: 4.6,
       brand: "iphone",
-      link: "../html/product_detail.html",
     },
     {
       id: 2,
@@ -197,6 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Sau khi header và footer được tải xong, bạn có thể gọi các hàm khác ở đây
     Home();
     Login();
+    Search();
   };
 
   addHTML();
@@ -209,13 +209,13 @@ const Home = async () => {
 
   const items_1 = products.product.map((item, index) => {
     if (index <= 4) {
-      return `<li class="list-group-item">
-    <a href="${item.link}">
+      return `<li class="list-group-item" id=${index}>
+      
       <img
         style="width: 207px; height: 207px"
         src=${item.img}
         alt=""
-    /></a>
+        
   </li>`;
     }
   });
@@ -223,25 +223,21 @@ const Home = async () => {
   const items_2 = products.product.map((item, index) => {
     if (index >= 5 && index <= 9) {
       return `<li class="list-group-item">
-      <a href="${item.link}">
         <img
           style="width: 207px; height: 207px"
           src=${item.img}
           alt=""
-      /></a>
     </li>`;
     }
   });
 
   const items_3 = products.product.map((item, index) => {
     if (index >= 10 && index <= 14) {
-      return `<li class="list-group-item">
-      <a href="${item.link}">
+      return `<li class="list-group-item">  
         <img
           style="width: 207px; height: 207px"
           src=${item.img}
-          alt=""
-      /></a>
+          alt="" 
     </li>`;
     }
   });
@@ -252,6 +248,20 @@ const Home = async () => {
   productList1.innerHTML = itemsHTML_1;
   productList2.innerHTML = itemsHTML_2;
   productList3.innerHTML = itemsHTML_3;
+
+  const productItems_1 = document.querySelectorAll(".product_list_1 li");
+  productItems_1.forEach((e) => {
+    e.addEventListener("click", (event) => {
+      // Chuyển đối tượng thành chuỗi JSON và mã hóa chuỗi
+      var encodedData = encodeURIComponent(
+        JSON.stringify(products.product[event.currentTarget.id])
+      );
+
+      // Chuyển hướng đến trang mới và truyền dữ liệu qua tham số truy vấn
+      window.location.href =
+        "http://127.0.0.1:5500/html/product_detail.html?data=" + encodedData;
+    });
+  });
 };
 
 const Login = () => {
@@ -283,4 +293,16 @@ const Login = () => {
   });
 };
 
+// ---search
+
+const Search = () => {
+  const search = document.querySelector(".timkiem");
+  search.addEventListener("keydown", function (event) {
+    products.product.map((e) => {
+      if (e.name.includes(search.value)) {
+        console.log(e.name);
+      }
+    });
+  });
+};
 //--- call funcition

@@ -98,6 +98,7 @@ function handleSignUp() {
         password: passwordInput.value,
         email: emailInput.value,
         loged: "0",
+        products: [],
       };
       localStorage.setItem("user_info", JSON.stringify(user));
 
